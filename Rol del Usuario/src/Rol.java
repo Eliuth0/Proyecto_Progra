@@ -4,11 +4,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Rol extends JFrame {
+
+    private JComboBox<String> tipoBox;
+    private JTextField colorTextField;
+    private JTextField pasajerosTextField;
+    private JComboBox<String> equipajeBox;
+    private JTextField ubiTextField;
+    private JTextField preTextField;  
     
 
     public Rol() {
         setTitle("Rol");
-        setSize(350, 450);
+        setSize(450, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         setLocationRelativeTo(null);
@@ -26,8 +33,20 @@ public class Rol extends JFrame {
         title.setForeground(new Color(27, 67, 50)); // color verde
         add(title, gbc);
 
-        // Rol de usuario
         gbc.gridy = 1;
+        gbc.gridwidth = 1;
+        gbc.gridx = 0;
+        JLabel idLabel = new JLabel("Id del Estudiante:");
+        add(idLabel, gbc);
+
+        gbc.gridx = 1;
+        gbc.gridwidth = 3;
+        JTextField idTextField = new JTextField();
+        idTextField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        add(idTextField, gbc);
+
+        // Rol de usuario
+        gbc.gridy = 2;
         gbc.gridwidth = 1;
         add(new JLabel("Rol:"), gbc);
         gbc.gridx = 1;
@@ -41,7 +60,7 @@ public class Rol extends JFrame {
         JPanel rol2Panel = new JPanel();
         rol2Panel.setLayout(new GridBagLayout()); 
         gbc.gridx = 0;
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         gbc.gridwidth = 2;
         add(rol2Panel, gbc);
 
@@ -67,7 +86,7 @@ public class Rol extends JFrame {
                     //String para tipos de vehículos y JComboBox para escoger entre opciones
                     gbc.gridx = 1;
                     String[]vehículoStrings = {"Carro", "Camioneta", "Moto"};
-                    JComboBox<String> tipoBox = new JComboBox<>(vehículoStrings); 
+                    tipoBox = new JComboBox<>(vehículoStrings); 
                     rol2Panel.add(tipoBox, gbc);
 
                     //Título de color vehículo 
@@ -77,14 +96,41 @@ public class Rol extends JFrame {
                     JLabel colorLabel = new JLabel("Color del vehículo:");
                     rol2Panel.add(colorLabel, gbc);
             
-                    //String para color y JComboBox para escoger entre las opciones 
+                    //Text Field para ingresar el color
                     gbc.gridx = 1;
-                    String[]colorStrings = {"Negro", "Gris", "Rojo", "Azul"};
-                    JComboBox<String> colorBox = new JComboBox<>(colorStrings); 
-                    rol2Panel.add(colorBox, gbc);
+                    colorTextField =  new JTextField();
+                    colorTextField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+                    rol2Panel.add(colorTextField, gbc);
+
+
+                     //Título para Cantidad de pasajeros
+                     gbc.gridx = 0;
+                     gbc.gridy = 2;
+                     gbc.gridwidth = 1;
+                     JLabel texto = new JLabel("Cantidad de Pasajeros");
+                     rol2Panel.add(texto, gbc);
+ 
+                     //JTextField para cantidad de pasajeros
+                     gbc.gridx = 1;
+                     pasajerosTextField = new JTextField();
+                     pasajerosTextField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+                     rol2Panel.add(pasajerosTextField, gbc);
+
+                      //título de lugar de equipaje
+                    gbc.gridy = 3;
+                    gbc.gridwidth = 1;
+                    gbc.gridx = 0;
+                    JLabel equipajeLabel = new JLabel("¿Lugar para equipaje?:");
+                    rol2Panel.add(equipajeLabel, gbc);
+                  
+                    //String para equipaje y JComboBox para escoger entre opciones
+                    gbc.gridx = 1;
+                    String[]equipajeStrings = {"Si", "No"};
+                    equipajeBox = new JComboBox<>(equipajeStrings); 
+                    rol2Panel.add(equipajeBox, gbc);
 
                     //Butón para subir la licencia
-                    gbc.gridy = 2;
+                    gbc.gridy = 4;
                     gbc.gridwidth = 1;
                     gbc.gridx = 0;
                     JButton subirButton = new JButton("Subir licencia");
@@ -94,7 +140,7 @@ public class Rol extends JFrame {
 
                     //Mensaje que se muestra antes de presionar el butón
                     gbc.gridx = 0;
-                    gbc.gridy = 3;
+                    gbc.gridy = 5;
                     gbc.gridwidth = 2;
                     JLabel etiqueta = new JLabel("Sin archivo");
                     rol2Panel.add(etiqueta, gbc);
@@ -106,6 +152,7 @@ public class Rol extends JFrame {
                             etiqueta.setText("¡El archivo ha sido subido!");
                         }
                     });
+                     
 
                 
                 } else if ("Pasajero".equals(rolSeleccionado)) {
@@ -113,17 +160,30 @@ public class Rol extends JFrame {
                     //Título para Ubicación de Inicio 
                     gbc.gridx = 0;
                     gbc.gridy = 0;
-                    gbc.gridwidth = 1;
+                    gbc.gridwidth = 5;
                     JLabel texto = new JLabel("Ubicación de inicio");
                     rol2Panel.add(texto, gbc);
 
                     //Área de texto para escribir la ubicación 
-                    gbc.gridx = 3;
-                    gbc.gridwidth = 5;
-                    JTextArea introTextArea = new JTextArea(2, 15);
-                    introTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-                    rol2Panel.add(new JScrollPane(introTextArea), gbc);
+                    gbc.gridx = 0;
+                    gbc.gridy = 1;
+                    ubiTextField = new JTextField();
+                    ubiTextField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+                    rol2Panel.add(ubiTextField, gbc);
                     
+                    gbc.gridx = 0;
+                    gbc.gridy = 2;
+                    gbc.gridwidth = 1;
+                    JLabel preferencia = new JLabel("Preferencia extra (opcional)");
+                    rol2Panel.add(preferencia, gbc);
+
+                    gbc.gridx = 0;
+                    gbc.gridy = 3;
+                    gbc.gridwidth = 5;
+                    preTextField =  new JTextField();
+                    preTextField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+                    rol2Panel.add(new JScrollPane(preTextField), gbc);
+
                 }
 
                 rol2Panel.revalidate(); 
@@ -149,16 +209,68 @@ public class Rol extends JFrame {
      
         //Butón para finalizar los ajustes 
         gbc.gridy = 7;
+        gbc.gridx = 0; 
+        gbc.gridwidth = 1; 
         JButton finalizarButton = new JButton("Finalizar");
         finalizarButton.setForeground(Color.WHITE);
         finalizarButton.setBackground(new Color(27, 67, 50));
         add(finalizarButton, gbc);
 
-        //Al presionar el boton crea una ventana para mandar mensaje 
-        finalizarButton.addActionListener((ActionEvent e) -> {
-            new RolHecho();
-            dispose(); 
+        finalizarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e){
+
+
+                String rolSeleccionado = (String)rolBox.getSelectedItem();
+                
+                String tipoValor = rolSeleccionado.equals("Conductor") && tipoBox != null ?
+                                    (String)tipoBox.getSelectedItem() : ""; 
+                
+                String colorValor = rolSeleccionado.equals("Conductor") && tipoBox != null ?
+                                    colorTextField.getText() : ""; 
+
+                String cantidadValor = rolSeleccionado.equals("Conductor") && tipoBox != null ?
+                                    pasajerosTextField.getText() : ""; 
+                                    
+                String equipajeValor = rolSeleccionado.equals("Conductor") && tipoBox != null ?
+                                    (String)equipajeBox.getSelectedItem() : ""; 
+                
+                String ubicacionValor = rolSeleccionado.equals("Pasajero") && tipoBox != null ?
+                                    ubiTextField.getText() : ""; 
+
+                String preferenciasValor = rolSeleccionado.equals("Pasajero") && tipoBox != null ?
+                                    preTextField.getText() : "";
+                                    
+                String comentario = introTextArea.getText();
+                JTextField introTextField = new JTextField(comentario);
+
+                JTextField[] campos = { 
+                    idTextField, 
+                    new JTextField(rolSeleccionado),
+                    new JTextField(tipoValor),
+                    new JTextField(colorValor),
+                    new JTextField(cantidadValor),
+                    new JTextField(equipajeValor),
+                    new JTextField(ubicacionValor),
+                    new JTextField(preferenciasValor),
+                    introTextField   };
+
+                new AgregarRol(campos).actionPerformed(e);
+
+                
+            } 
         });
+        
+        add(finalizarButton, gbc);
+
+        gbc.gridy = 7;
+        gbc.gridx = 1;
+        gbc.gridwidth = 2;
+        JButton ayudaButton = new JButton("Ayuda");
+        ayudaButton.setForeground(Color.WHITE);
+        ayudaButton.setBackground(new Color(27, 67, 50));
+        ayudaButton.addActionListener(new AyudaUser());
+        add(ayudaButton, gbc);
 
         setVisible(true); }
           
