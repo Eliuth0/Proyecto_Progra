@@ -209,6 +209,8 @@ public class Rol extends JFrame {
      
         //Butón para finalizar los ajustes 
         gbc.gridy = 7;
+        gbc.gridx = 0; 
+        gbc.gridwidth = 1; 
         JButton finalizarButton = new JButton("Finalizar");
         finalizarButton.setForeground(Color.WHITE);
         finalizarButton.setBackground(new Color(27, 67, 50));
@@ -236,7 +238,7 @@ public class Rol extends JFrame {
                 String ubicacionValor = rolSeleccionado.equals("Pasajero") && tipoBox != null ?
                                     ubiTextField.getText() : ""; 
 
-                String preferenciasValor = rolSeleccionado.equals("Conductor") && tipoBox != null ?
+                String preferenciasValor = rolSeleccionado.equals("Pasajero") && tipoBox != null ?
                                     preTextField.getText() : "";
                                     
                 String comentario = introTextArea.getText();
@@ -260,6 +262,15 @@ public class Rol extends JFrame {
         });
         
         add(finalizarButton, gbc);
+
+        gbc.gridy = 7;
+        gbc.gridx = 1;
+        gbc.gridwidth = 2;
+        JButton ayudaButton = new JButton("Ayuda");
+        ayudaButton.setForeground(Color.WHITE);
+        ayudaButton.setBackground(new Color(27, 67, 50));
+        ayudaButton.addActionListener(new AyudaUser());
+        add(ayudaButton, gbc);
 
         setVisible(true); }
           
