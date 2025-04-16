@@ -1,0 +1,62 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class InicioDeSesion extends JFrame implements ActionListener {
+    private Usuario usuario;
+
+    private JLabel correoLabel, contraseñaLabel;
+    private JTextField correoField;
+    private JPasswordField contraseñaField;
+    private JButton InicioSesionB, RegistroB;
+
+
+    // Constructor para inicializar el JFrame
+    public InicioDeSesion() {
+        super("Inicio de sesion GUI - JFrame Version");
+        usuario = new Usuario();
+        setLayout(new GridLayout(3, 2));
+
+        correoLabel = new JLabel("  Intrese su correo: ");
+        correoField = new JTextField(10);
+        add(correoLabel);
+        add(correoField);
+
+        contraseñaLabel = new JLabel("  Ingrese su contraseña: ");
+        contraseñaField = new JPasswordField(15);
+        add(contraseñaLabel);
+        add(contraseñaField);
+
+        RegistroB = new JButton("Registrarse");
+        InicioSesionB = new JButton("Iniciar Sesión");
+        add(InicioSesionB);
+        add(RegistroB);
+
+        correoField.addActionListener(this);
+        contraseñaField.addActionListener(this);
+        RegistroB.addActionListener(this);
+        InicioSesionB.addActionListener(this);
+    }
+
+
+    public void actionPerformed(ActionEvent event) {
+        if (event.getSource() == InicioSesionB) {
+            String correoIngresado = correoField.getText();
+            String contraseñaIngresada = new String(contraseñaField.getPassword());
+
+            // Validar contra los datos del usuario
+            if (correoIngresado.equals(usuario.getCorreo()) &&
+                    contraseñaIngresada.equals(usuario.getContraseña())) {
+                JOptionPane.showMessageDialog(this, "¡Inicio de sesión exitoso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Correo o contraseña incorrectos.",
+                        "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+            // Limpiar campos
+            correoField.setText("");
+            contraseñaField.setText("");
+        }
+    }
+}
