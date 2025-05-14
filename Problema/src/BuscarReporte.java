@@ -26,9 +26,12 @@ public class BuscarReporte implements ActionListener {
                 ResultSet resultado = stmt.executeQuery();
 
                 if (resultado.next()) {
-                    for (int i = 2; i < campos.length; i++) {
-                        campos[i-1].setText(resultado.getString(i + 1));
+                    for (int i = 1; i < campos.length; i++) {
+                        campos[i-1].setText(resultado.getString(i+1));
                     }
+ 
+                    if(campos.length > 2) campos[2].setText(resultado.getString(4));
+
                     JOptionPane.showMessageDialog(null, "✅ Registro encontrado.");
                 } else {
                     JOptionPane.showMessageDialog(null, "⚠️ No se encontró ningún registro con ese nombre y apellido.");
