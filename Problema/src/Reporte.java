@@ -72,9 +72,9 @@ public class Reporte extends JFrame {
         // Área de texto para comentarios
         gbc.gridy = 8;
         gbc.gridwidth = 7;
-        JTextArea introTextArea = new JTextArea(5, 30);
-        introTextArea.setBorder(BorderFactory.createLineBorder(Color.GRAY));
-        add(new JScrollPane(introTextArea), gbc);
+        JTextField introTextField = new JTextField();
+        introTextField.setBorder(BorderFactory.createLineBorder(Color.GRAY));
+        add(new JScrollPane(introTextField), gbc);
 
 
         gbc.gridy = 9;
@@ -88,8 +88,8 @@ public class Reporte extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
 
-                String comentario = introTextArea.getText();
-                JTextField introTextField = new JTextField(comentario);
+                //String comentario = introTextArea.getText();
+                //JTextField introTextField = new JTextField(comentario);
 
                 JTextField[] campos = {idTextField, reasonTextField, introTextField};
                 new AgregarReporte(campos).actionPerformed(e);
@@ -109,8 +109,8 @@ public class Reporte extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
 
-                String comentario = introTextArea.getText();
-                JTextField introTextField = new JTextField(comentario);
+                //String comentario = introTextArea.getText();
+                //JTextField introTextField = new JTextField(comentario);
 
                 JTextField[] campos = {idTextField, reasonTextField, introTextField};
                 new BuscarReporte(campos).actionPerformed(e);
@@ -130,8 +130,8 @@ public class Reporte extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e){
 
-                String comentario = introTextArea.getText();
-                JTextField introTextField = new JTextField(comentario);
+               // String comentario = introTextArea.getText();
+               // JTextField introTextField = new JTextField(comentario);
 
                 JTextField[] campos = {idTextField, reasonTextField, introTextField};
                 new Limpiar(campos).actionPerformed(e);
