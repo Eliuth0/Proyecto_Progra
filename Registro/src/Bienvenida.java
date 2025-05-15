@@ -6,7 +6,7 @@ public class Bienvenida extends JFrame {
     
     public Bienvenida() {
         // Configuración de la ventana
-        setTitle("Bienvenido a UDLAP Uber");
+        setTitle("Bienvenido a Mobility UDLAP");
         setSize(400, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // Centra la ventana
@@ -16,7 +16,7 @@ public class Bienvenida extends JFrame {
         panel.setLayout(new BorderLayout());
 
         // Etiqueta de bienvenida
-        JLabel etiqueta = new JLabel("¡Bienvenido a UDLAP Uber!", JLabel.CENTER);
+        JLabel etiqueta = new JLabel("¡Bienvenido a Mobility UDLAP!", JLabel.CENTER);
         etiqueta.setFont(new Font("Arial", Font.BOLD, 24));
         panel.add(etiqueta, BorderLayout.CENTER);
 
